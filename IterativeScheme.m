@@ -1,10 +1,10 @@
-function PsPlus1 = IterativeScheme(ii,img, rArr, labels)
-    [x,y] = ind2sub(ii, img); % get x,y coords from index of pixel
-    p = [img(ii), 1 - img(ii)];
+function PsPlus1 = IterativeScheme(x,y,img, rArr, labels)    
+    p = [img(x,y), 1 - img(x,y)];
     
     normaliser = 0;
-    for k = 1:size(labels)
-        normaliser = normaliser + p(1) * TotalContexualSupportFromAdjacents(x,y,rArr(ii).(labels{k}),img);
+    for k = 1:size(labels,2)
+        temp = TotalContexualSupportFromAdjacents(x, y, rArr.(labels{k}), p, img);
+        normaliser = normaliser + p(k) * temp;
     end
-    PsPlus1 = img(ii) * TotalContexualSupportFromAdjacents(x,y,rArr(ii).('e'),img) / normaliser;
+    PsPlus1 = img(x,y) * TotalContexualSupportFromAdjacents(x, y, rArr.('e'), p, img) / normaliser;
 end

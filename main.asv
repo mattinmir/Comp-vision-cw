@@ -1,7 +1,7 @@
 labels = {'e', 'ne'};
 
 %quetion a
-rArr.('e') = [2,1]; 
+rArr.('e') = [1,1]; 
 rArr.('ne') = [1,1];
 
 %question b and c
@@ -14,23 +14,22 @@ qa = [0 0   0   0   0;
       0 0.1 0   0   0;
       0 0   0   0  0;];
   
- qaNew = qa;
- 
- 
 qb = [0 0 0   0 0;
       0 0 0   0 0; 
       0 0 0.1 0 0;
       0 0 0   0 0;
       0 0 0   0 0;];
- 
+  
 for iteration = 1:2
-    qa = qaNew;
     for pixelx = 1:5
         for pixely = 1:5
-             qaNew(pixelx,pixely) = IterativeScheme(pixelx, pixely, qa ,rArr, labels);
+             qatemp = IterativeScheme(pixelx, pixely, qb ,rArr, labels);
+             qa(pixelx,pixely) = qatemp;
+            qa
         end
     end
 end
 
-qaNew
+qa
+    
          

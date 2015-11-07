@@ -1,0 +1,12 @@
+function PsPlus1 = IterativeScheme(ii,img, rArr, labels)
+    x = mod(11,5);
+    y =
+    
+    p = [img(ii), 1 - img(ii)];
+    
+    normaliser = 0;
+    for k = 1:size(labels)
+        normaliser = normaliser + p(k) * TotalContexualSupportFromAdjacents(x, y, rArr(ii).(labels{k}), p, img);
+    end
+    PsPlus1 = img(ii) * TotalContexualSupportFromAdjacents(x, y, rArr(ii).('e'), p, img) / normaliser;
+end

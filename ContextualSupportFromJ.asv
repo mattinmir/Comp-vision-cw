@@ -17,10 +17,10 @@
 % such that if r(1) -> (i:e, j:e), p(1) -> P(j:e) and  r(2) -> (i:e, j:ne), p(2) -> P(j:ne) and etc.
 
 function qsj = ContextualSupportFromJ(r, p)
-    m = size(r,2);
+    m = size(r);
     qsjTemp = 0;
     for k = 1:m;
-        qsjTemp = qsjTemp + r(k) * p(k);
+        qsjTemp = qsjTemp + r(k)*p(k);
     end
     qsj = qsjTemp;
 end
